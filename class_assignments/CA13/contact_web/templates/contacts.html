@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Contacts</title>
+  </head>
+  <body>
+    <div>
+      <h2>Contacts:</h2>
+
+      {% for contact in contacts %}
+      <div>
+        <div>
+          <h3><a href="/contact/{{loop.index0}}">{{contact.lname}}, {{contact.fname}}</a></h3>
+        </div>
+      {% endfor %}
+    </div>
+  </body>
+</html>

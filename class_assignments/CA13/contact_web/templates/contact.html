@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Contact - {{contact.lname}}, {{contact.fname}}</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <div>
+      <h2 class="contact-name"><b>{{contact.lname}}</b>, {{contact.fname}}</h2>
+    </div>
+    {% if contact.emails %}
+    <div>
+      <h3>Emails:</h3>
+      <ul>
+        {% for email in contact.emails %}
+        <li>{{email}}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    {%endif%}
+
+    <div class="navigation-arrows">
+      <a href="">&#171;</a>
+      <a href="">&#8212;</a>
+      <a href="">&#187;</a>
+    </div>
+  </body>
+</html>
