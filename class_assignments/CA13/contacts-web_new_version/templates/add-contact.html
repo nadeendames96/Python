@@ -1,0 +1,78 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="container">
+  <div class="py-5 text-center">
+    <img
+      class="d-block mx-auto mb-4"
+      src="/docs/4.5/assets/brand/bootstrap-solid.svg"
+      alt=""
+      width="72"
+      height="72"
+    />
+    <h2>Add Contact</h2>
+    <p class="lead">
+      Fill in the information below to add a new contact to your contact book.
+    </p>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <h4 class="mb-3">Basic Information</h4>
+      <form method="POST" action="{{url_for('add_contact')}}">
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="firstName">First name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="firstName"
+              name="firstName"
+              placeholder="Enter your first name"
+              required
+            />
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="lastName">Last name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="lastName"
+              name="lastName"
+              placeholder="Enter your last name"
+              required=""
+            />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="firstName">Biography</label>
+            <textarea
+              type="text"
+              class="form-control"
+              id="biography"
+              name="biography"
+              placeholder="Be creative!"
+            ></textarea>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="avatar">Avatar</label>
+            <input
+              type="text"
+              class="form-control"
+              id="avatar"
+              name="avatar"
+              placeholder="Enter your avatar URL"
+            />
+          </div>
+        </div>
+        <hr class="mb-4" />
+        <button class="btn btn-primary btn-lg btn-block" type="submit">
+          Create contact
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

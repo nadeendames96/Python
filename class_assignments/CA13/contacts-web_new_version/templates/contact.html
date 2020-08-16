@@ -1,0 +1,85 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container py-4">
+  <h1><a href="{{url_for('contacts')}}">&laquo;</a></h1>
+  <div class="container py-4">
+    <div class="card" style="width: 18rem;">
+      <img src="{{contact.avatar_url}}" class="card-img-top" alt="..." />
+      <div class="card-body">
+        <h5 class="card-title">{{contact.lname}}, {{contact.fname}}</h5>
+        <p class="card-text">{{contact.biography}}</p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Cras justo odio</li>
+        <li class="list-group-item">Dapibus ac facilisis in</li>
+        <li class="list-group-item">Vestibulum at eros</li>
+      </ul>
+      <div class="card-body">
+        <a href="#" class="card-link">Card link</a>
+        <a href="#" class="card-link">Another link</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- phone numbers -->
+  <div class="container py-2">
+    <h3>Phone Numbers</h3>
+
+    {% if contact.phone_numbers %}
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Phone</th>
+          <th scope="col">Labels</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for label, phone_number in contact.phone_numbers.items() %}
+        <tr>
+          <th scope="row">{{loop.index}}</th>
+          <td>{{phone_number}}</td>
+          <td><b>{{label | capitalize}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    {% else %}
+    <h5>This contact has no phone numbers.</h5>
+    {% endif %}
+
+
+  </div>
+
+  <!-- emails section -->
+  {% if contact.emails %}
+  <div class="container py-2">
+    <h3>Emails</h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Email</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for email in contact.emails %}
+        <tr>
+          <th scope="row">{{loop.index}}</th>
+          <td>{{ email }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% endif %} {% if contact.labels %}
+  <div class="container py-2">
+    <h3>Labels</h3>
+    {% for label in contact.labels %}
+    <li><b>{{label}}</b></li>
+    {% endfor %}
+  </div>
+  {% endif %}
+</div>
+{% endblock %}
