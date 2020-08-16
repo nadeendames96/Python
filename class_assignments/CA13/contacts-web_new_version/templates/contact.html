@@ -1,27 +1,36 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %}
+
+{% block content %}
+ <!-- Header section -->
+ <header>
+  <div class="jumbotron" style="display: flex;background-color: #ffffff;">
+  <div class="container">
+  <img  src="{{contact.avatar_url}}" class="card-img-top" alt="..." style="width: 30%;margin-bottom: 20px;"/>
+  </div>
+  <div class="container">
+  <h5  class="card-title container" style="font-size: 50px;color: black;">{{contact.lname}}, {{contact.fname}}</h5>
+</div>
+</div>
+</header>
 <div class="container py-4">
-  <h1><a href="{{url_for('contacts')}}">&laquo;</a></h1>
+  <h1><a href="{{url_for('contacts')}}"><span style="color: white;">&laquo;</span> <span style="color: black;font-size: 25px;">Go Back</span></a></h1>
+  <br/>
+  <h3 style="text-align: center;font-size: 35px;font-weight: 700;">Biography</h3>
+  {% if contact.biography %}
   <div class="container py-4">
-    <div class="card" style="width: 18rem;">
-      <img src="{{contact.avatar_url}}" class="card-img-top" alt="..." />
+    <div class="card bg-dark text-white" style="width: 70rem;">
+      <!-- <img src="{{contact.avatar_url}}" class="card-img-top" alt="..." /> -->
       <div class="card-body">
-        <h5 class="card-title">{{contact.lname}}, {{contact.fname}}</h5>
-        <p class="card-text">{{contact.biography}}</p>
-      </div>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">Cras justo odio</li>
-        <li class="list-group-item">Dapibus ac facilisis in</li>
-        <li class="list-group-item">Vestibulum at eros</li>
-      </ul>
-      <div class="card-body">
-        <a href="#" class="card-link">Card link</a>
-        <a href="#" class="card-link">Another link</a>
+        <!-- <h5 class="card-title">{{contact.lname}}, {{contact.fname}}</h5> -->
+        <p class="card-body" style="text-align: center;font-weight:700;letter-spacing: 3px; font-family:Arial, Helvetica, sans-serif;">{{contact.biography}}</p>
       </div>
     </div>
   </div>
-
+  {% else %}
+  <p class="card-text">Empty biography yet</p>
+{% endif %}
   <!-- phone numbers -->
-  <div class="container py-2">
+  <div class="container py-2 bg-info text-white">
     <h3>Phone Numbers</h3>
 
     {% if contact.phone_numbers %}
@@ -32,6 +41,7 @@
           <th scope="col">ID</th>
           <th scope="col">Phone</th>
           <th scope="col">Labels</th>
+          <th scope="col">Action</th>
         </tr>
       </thead>
       <tbody>
@@ -40,6 +50,44 @@
           <th scope="row">{{loop.index}}</th>
           <td>{{phone_number}}</td>
           <td><b>{{label | capitalize}}</td>
+            <td><a href="{{url_for('get_contact', contact_id = loop.index0)}}"
+              ><svg
+                width="1em"
+                height="1em"
+                viewBox="0 0 16 16"
+                class="bi bi-pencil"
+                fill="#ffffff"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M11.293 1.293a1 1 0 0 1 1.414 0l2 2a1 1 0 0 1 0 1.414l-9 9a1 1 0 0 1-.39.242l-3 1a1 1 0 0 1-1.266-1.265l1-3a1 1 0 0 1 .242-.391l9-9zM12 2l2 2-9 9-3 1 1-3 9-9z"
+                />
+                <path
+                  fill-rule="evenodd"
+                  d="M12.146 6.354l-2.5-2.5.708-.708 2.5 2.5-.707.708zM3 10v.5a.5.5 0 0 0 .5.5H4v.5a.5.5 0 0 0 .5.5H5v.5a.5.5 0 0 0 .5.5H6v-1.5a.5.5 0 0 0-.5-.5H5v-.5a.5.5 0 0 0-.5-.5H3z"
+                />
+              </svg>
+            </a>
+            <a href="{{url_for('delete_contact', contact_id = loop.index0)}}"
+            ><svg
+              width="1em"
+              height="1em"
+              viewBox="0 0 16 16"
+              class="bi bi-trash"
+              fill="#ffffff"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"
+              />
+              <path
+                fill-rule="evenodd"
+                d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"
+              />
+            </svg>
+          </a>
+          </td>
         </tr>
         {% endfor %}
       </tbody>
@@ -51,16 +99,17 @@
 
 
   </div>
-
+<br/>
   <!-- emails section -->
   {% if contact.emails %}
-  <div class="container py-2">
+  <div class="container py-2 bg-success text-white">
     <h3>Emails</h3>
     <table class="table">
       <thead>
         <tr>
           <th scope="col">ID</th>
           <th scope="col">Email</th>
+          <th scope="col">Action</th>
         </tr>
       </thead>
       <tbody>
@@ -68,16 +117,55 @@
         <tr>
           <th scope="row">{{loop.index}}</th>
           <td>{{ email }}</td>
+          <td><a href="{{url_for('get_contact', contact_id = loop.index0)}}"
+            ><svg
+              width="1em"
+              height="1em"
+              viewBox="0 0 16 16"
+              class="bi bi-pencil"
+              fill="#ffffff"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M11.293 1.293a1 1 0 0 1 1.414 0l2 2a1 1 0 0 1 0 1.414l-9 9a1 1 0 0 1-.39.242l-3 1a1 1 0 0 1-1.266-1.265l1-3a1 1 0 0 1 .242-.391l9-9zM12 2l2 2-9 9-3 1 1-3 9-9z"
+              />
+              <path
+                fill-rule="evenodd"
+                d="M12.146 6.354l-2.5-2.5.708-.708 2.5 2.5-.707.708zM3 10v.5a.5.5 0 0 0 .5.5H4v.5a.5.5 0 0 0 .5.5H5v.5a.5.5 0 0 0 .5.5H6v-1.5a.5.5 0 0 0-.5-.5H5v-.5a.5.5 0 0 0-.5-.5H3z"
+              />
+            </svg>
+          </a>
+          <a href="{{url_for('delete_contact', contact_id = loop.index0)}}"
+          ><svg
+            width="1em"
+            height="1em"
+            viewBox="0 0 16 16"
+            class="bi bi-trash"
+            fill="#ffffff"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"
+            />
+            <path
+              fill-rule="evenodd"
+              d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"
+            />
+          </svg>
+        </a>
+        </td>
         </tr>
         {% endfor %}
       </tbody>
     </table>
   </div>
   {% endif %} {% if contact.labels %}
-  <div class="container py-2">
-    <h3>Labels</h3>
+  <br/>
+  <h3>Labels</h3>
+  <div class="container py-2" style="display: flex;">
     {% for label in contact.labels %}
-    <li><b>{{label}}</b></li>
+    <li style="margin-left: 10px;list-style-type: none;width:30%; font-size:20px;"><a href="#" style="color: black;"><b>-{{label}}</b></a></li>
     {% endfor %}
   </div>
   {% endif %}

@@ -92,6 +92,12 @@ def page_not_found(e):
 def internal_server_error(e):
     return render_template('errors/500.html'), 500
 
+
+@app.template_filter()
+def date(formate):
+    return formate + Markup(' &#9835;')
+
+
 # run your flask application
 if __name__ == "__main__":  # on running python app.py
     app.run(debug=True)  # run the flask app

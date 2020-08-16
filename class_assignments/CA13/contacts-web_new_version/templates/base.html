@@ -18,9 +18,10 @@
     />
     {% endblock %} {% endblock %}
   </head>
-  <body class="d-flex flex-column h-100">
+  <body class="d-flex flex-column h-100" style="background-color: #f94877;color: white;">
+   
     <!-- navigation section -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <a class="navbar-brand" href="{{url_for('index')}}">{{site.name}}</a>
       <button
         class="navbar-toggler"
@@ -86,12 +87,7 @@
 
     <!-- footer section -->
     <footer class="my-5 pt-5 text-muted text-center text-small">
-      <p class="mb-1">© 2020 Contact Book</p>
-      <ul class="list-inline">
-        <li class="list-inline-item"><a href="#">Privacy</a></li>
-        <li class="list-inline-item"><a href="#">Terms</a></li>
-        <li class="list-inline-item"><a href="#">Support</a></li>
-      </ul>
+      <p class="mb-1" style="color: white;"><b>© 2020 Nadeen Dames</b></p>
     </footer>
     {% block scripts %}{% endblock %}
   </body>
