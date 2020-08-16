@@ -27,6 +27,9 @@ class ContactBook:
     def get_contact(self, contact_id):
         return self.contacts[contact_id]
 
+    def get_contactss(self, contact_id,keyword):
+        return self.contacts[contact_id]
+
     # delete_contact(contact)
     def delete_contact(self, contact):
         if contact in self.contacts:
@@ -49,7 +52,7 @@ class ContactBook:
         for contact in self.contacts:
 
             # call get_contact(contact, keyword)
-            contact = self.get_contact(contact, keyword)
+            contact = self.get_contactss(contact, keyword)
 
             # check if contact exists
             if contact != None:

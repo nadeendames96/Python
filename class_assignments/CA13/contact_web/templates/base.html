@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% block head %}
+        <link rel="stylesheet" href="style.css" />
+        <title>{% block title %}{% endblock %} - Contact Webpage</title>
+        {% endblock %}
+        </head>
+        <body>
+            <div id="content">{% block content %}{% endblock %}</div>
+        </body>
+        <footer>
+            <div id="footer">
+                {% block footer %}
+                &copy; Copyright 2008 by <a href="http://domain.invalid/">you</a>.
+                {% endblock %}
+            </div>
+        </footer>
+</html>

@@ -27,9 +27,6 @@ def contact(contact_id):
 @app.route('/length')
 def length():
     return str(len(contact_book.get_contacts()))
-
-
-# run your flask application
-
+    
 if __name__ == "__main__":  # on running python app.py
     app.run(debug=True)  # run the flask app
