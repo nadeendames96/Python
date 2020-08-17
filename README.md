@@ -11,8 +11,4 @@
 |**Week 4**                                     |
 | [PA4 - Nadeen Dames](./partical_assignments/PA4_NadeenDames)  
 | **Week 5**                                     |
-| [PA5 - Nadeen Dames](./partical_assignments/PA5_NadeenDames)                                | <!-- 
-| 
-| 
-| 
-| 
+| [PA5 - Nadeen Dames](./partical_assignments/PA5_NadeenDames)                               
