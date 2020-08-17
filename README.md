@@ -3,7 +3,7 @@
 | Session                                        | Class Assignment                    |       Practical Assignment       |
 | :--------------------------------------------- | :---------------------------------- | :------------------------------: |
 | **Week 1**                                     |
-| [PA1](./partical_assignments/PA1_NadeenDames)                                | [CA01](./W1/S1/CA01.md)             |                NA                |
+| [PA1 - Nadeen Dames](./partical_assignments/PA1_NadeenDames)                                | [CA01](./W1/S1/CA01.md)             |                NA                |
 | [W1S2 - Basics of Data Structure](./W1/S2/)    | [CA02](./W1/S2/CA02.md)             |                NA                |
 | [W1S3 - Basics of Flow Control](./W1/S3/)      | [CA03](./W1/S3/CA03.md)             |     [PA01](./W1/S3/PA01.md)      |
 | **Week 2**                                     |
