@@ -13,7 +13,7 @@ class ContactBook:
         # instance attributes
         #
 
-        self.contacts = list()
+        self.contacts = dict()
 
     #
     # instance methods
@@ -21,25 +21,22 @@ class ContactBook:
 
     # add(contact)
     def add(self, contact):
-        self.contacts.append(contact)
+        self.contacts[contact.id] = contact
 
     # get_contact(contact, keyword)
     def get_contact(self, contact_id):
-        contact = self.contacts[contact_id]
-
-        if contact:
-            return contact
-        else:
-            return None
+        return self.contacts.get(contact_id)
 
     # delete_contact(contact)
     def delete_contact(self, contact_id):
-        contact = self.get_contact(contact_id)
+        # contact = self.get_contact(contact_id)
+        # print(f"Deleting {contact_id} from dictionary.")
+        # print(self.contacts)
+        # if contact:
+        print(f"Deleting {contact_id} from dictionary.")
 
-        if contact:
-            self.contacts.remove(contact)
-        else:
-            return None
+        self.contacts.pop(contact_id, None)
+        print(self.contacts)
 
     # get_contacts()
     def get_contacts(self):
@@ -120,3 +117,4 @@ class ContactBook:
         print(f"{contacts_without_email} contacts without an email address.\n")
 
         # return contacts_without_phone, contacts_without_email
+    

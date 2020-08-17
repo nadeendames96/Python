@@ -1,0 +1,47 @@
+{% extends 'base.html' %} {% block content %}
+<h1 class="ml-5"><a href="{{url_for('get_contact', contact_id = contact.id)}}">&laquo;<span style="font-size: 20px;" class="ml-2">Go Back</span></a></h1>
+<div class="container">
+  <div class="py-5 text-center">
+    <img
+      class="d-block mx-auto mb-4"
+      src="/docs/4.5/assets/brand/bootstrap-solid.svg"
+      alt=""
+      width="72"
+      height="72"
+    />
+    <h2>Add Label</h2>
+    <p class="lead">
+      Fill in the information below to add a new label to your contact
+      <b>{{contact.lname}}</b>, <b>{{contact.fname}}</b>.
+    </p>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <h4 class="mb-3">Label Information</h4>
+      <form
+        method="POST"
+        action="{{url_for('add_label', contact_id=contact.id)}}"
+      >
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="label">Label</label>
+            <input
+              type="text"
+              class="form-control"
+              id="label"
+              name="label"
+              placeholder="Enter your label"
+              required
+            />
+          </div>
+        </div>
+        <hr class="mb-4" />
+        <button class="btn btn-primary btn-lg btn-block" type="submit">
+          Add label
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

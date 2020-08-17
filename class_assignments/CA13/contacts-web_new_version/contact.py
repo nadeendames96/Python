@@ -8,7 +8,11 @@ class Contact:
         #
         # instance attributes
         #
-
+        self.friends=list()
+        self.likes=list()
+        self.birthday="1/1/1969"
+        self.address="Jordan"
+        self.id = id(self)
         self.fname = fname
         self.lname = lname
         self.emails = list()
@@ -44,11 +48,22 @@ class Contact:
     def add_label(self, label):
         # append label to the contact list of labels
         self.labels.append(label)
+     # add_likes   
+    def add_likes(self,like):
+        self.likes.append(like)
 
+    # add_friends   
+    def add_friends(self,friend):
+        self.friends.append(friend)
+    
     # add_email(label)
     def add_email(self, email):
         self.emails.append(email)
-
+    # update_address
+    def update_address(self,address):
+        self.address=address
+    def update_birthday(self,birthday):
+        self.birthday=birthday
     # update_biography(biography)
     def update_biography(self, biography):
         self.biography = biography
@@ -72,3 +87,5 @@ class Contact:
     def print_emails(self):
         for email in self.emails:
             print(f"{self.fname} has email: '{email}'")
+    def delete_phone(self,phone_key):
+     del self.phone_numbers[phone_key]

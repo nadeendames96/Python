@@ -1,19 +1,21 @@
 {% extends 'base.html' %} {% block content %}
-<div class="jumbotron" style="background-color: black;">
+<div class="jumbotron" style="background-color: black;color: #fff;">
   <div class="container">
     <h1 class="display-5">Welcome to {{site.name}}!</h1>
   </div>
 </div>
 <div>
   <ul>
-    <!-- <li><a href="{{ url_for('index') }}">Watchlist</a></li>
-    <li>Filter: {{ "I am feeling musical." }}</li> -->
+    <li>Filter: {{ "I am feeling musical." }}</li>
     <li>{{"I am a built-in filter." |upper}}</li>
     <li>Global: {{ global_message() }}</li>
-    <!-- <li>
-      <a href="{{ url_for('index') }}">Watchlist with image and styles.</a>
-    </li> -->
-    <li><a href="{{ url_for('just_flash') }}" style="color: white;text-decoration: underline;">Flash something</a></li>
+    <li><a href="{{ url_for('just_flash') }}">Flash something</a></li>
   </ul>
+  <div class="container">
+    <h1>Sumary</h1>
+    <h3><strong> Total Cotacts are :{{contacts|length}}</strong></h3>
+    <h3><small>  Contacts are :{{contacts}}</small></h3>
+
+  </div>
 </div>
 {% endblock %}

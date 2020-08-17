@@ -18,16 +18,13 @@ contact_book = generate_contacts()
 
 @app.route('/')
 def index():
-    return render_template('index.html', contact_book=contact_book, site = site)
+    contacts=contact_book.get_contacts()
+    contact=contact_book.get_contact(0)
+    return render_template('index.html', contact_book=contact_book, site = site,contacts=contacts)
 
 @app.route('/contacts/list')
 def contacts():
     return render_template('contacts.html', contacts = contact_book.get_contacts(), site = site)
-
-@app.route('/contacts/card')
-def contacts_card():
-    return render_template('contacts-card.html', contacts = contact_book.get_contacts(), site = site)
-
 @app.route('/contacts/add', methods=['POST', 'GET'])
 def add_contact():
     if request.method == 'GET':
@@ -37,13 +34,20 @@ def add_contact():
         last_name = request.form['lastName']
         biography = request.form['biography']
         avatar = request.form['avatar']
-
+        address=request.form['address']
+        birthday=request.form['birthday']
         contact = Contact(first_name, last_name)
-
         if biography != "":
             contact.update_biography(biography)
+        if birthday != "":
+            contact.update_birthday(birthday)
         if avatar != "":
             contact.avatar_url = avatar
+
+        if address != "":
+                contact.update_address(address)
+        if address != "":
+                contact.update_address(address)
             
         contact_book.add(contact)
 
@@ -58,6 +62,74 @@ def get_contact(contact_id):
 def delete_contact(contact_id):
     contact_book.delete_contact(contact_id)
     return redirect(url_for('contacts'))
+
+
+
+
+@app.route('/phone/add/<int:contact_id>', methods=['POST'])
+def add_phone(contact_id):
+
+    # read the values from the modal form
+    phone_number = request.form['phoneNumber']
+    label = request.form['label']
+
+    # add phone number to the contact   
+    contact = contact_book.get_contact(contact_id)
+    contact.add_phone(phone_number, label)
+
+    # render the contact again
+    return render_template('contact.html', contact = contact, site = site )
+
+@app.route('/email/add/<int:contact_id>', methods=['POST'])
+def add_email(contact_id):
+    email = request.form['email']
+
+    # retrieve the contact and add the email
+    contact = contact_book.get_contact(contact_id)
+    contact.add_email(email)
+
+    return redirect(url_for('get_contact', contact_id = contact.id , site = site))
+
+@app.route('/label/add/<int:contact_id>', methods=['GET','POST'])
+def add_label(contact_id):
+
+    contact = contact_book.get_contact(contact_id)
+
+    if request.method == 'GET':
+        return render_template('add-label.html', site=site, contact_id = contact_id, contact= contact)
+
+    if request.method == 'POST':
+        # read the label from the form submission
+        label = request.form['label']
+        
+        # add the label to the user
+        contact.add_label(label)
+
+        return redirect(url_for('get_contact', contact_id = contact_id, contact = contact, site = site))
+
+@app.route('/like/add/<int:contact_id>', methods=['POST'])
+def add_like(contact_id):
+
+    # read the values from the modal form
+    like = request.form['like']
+
+    # add phone number to the contact   
+    contact = contact_book.get_contact(contact_id)
+    contact.add_likes(like)
+
+    # render the contact again
+    return render_template('contact.html', contact = contact, site = site )
+
+@app.route('/friend/add/<int:contact_id>', methods=['POST'])
+def add_friend(contact_id):
+
+    # read the values from the modal form
+    friend = request.form['friends']
+    # add phone number to the contact   
+    contact = contact_book.get_contact(contact_id)
+    contact.add_friends(friend)
+    # render the contact again
+    return render_template('contact.html', contact = contact, site = site )
 
 # register template global function
 @app.template_global()
@@ -97,7 +169,12 @@ def internal_server_error(e):
 def date(formate):
     return formate + Markup(' &#9835;')
 
-
+@app.route('/login')
+def login():
+    return render_template('login.html',site=site)
+@app.route('/signup')
+def signup():
+    return render_template('signup.html',site=site)
 # run your flask application
 if __name__ == "__main__":  # on running python app.py
     app.run(debug=True)  # run the flask app

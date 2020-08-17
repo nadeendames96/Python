@@ -2,6 +2,7 @@
 
 <div class="container py-4">
   <h1 class="py-4">Contact List</h1>
+  <h4 class="py-2">This contact book has ({{contacts | length}})</h4>
   <table class="table">
     <thead>
       <tr>
@@ -12,19 +13,19 @@
       </tr>
     </thead>
     <tbody>
-      {% for contact in contacts %}
+      {% for id, contact in contacts.items() %}
       <tr>
-        <th scope="row">{{loop.index}}</th>
+        <th scope="row">{{id}}</th>
         <td>{{ contact.fname }}</td>
         <td>{{ contact.lname }}</td>
         <td>
-          <a href="{{url_for('get_contact', contact_id = loop.index0)}}"
+          <a href="{{url_for('get_contact', contact_id = id)}}"
             ><svg
               width="1em"
               height="1em"
               viewBox="0 0 16 16"
               class="bi bi-binoculars"
-              fill="#ffffff"
+              fill="currentColor"
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
@@ -33,13 +34,13 @@
               />
             </svg>
           </a>
-          <a href="{{url_for('get_contact', contact_id = loop.index0)}}"
+          <a href="{{url_for('get_contact', contact_id = id)}}"
             ><svg
               width="1em"
               height="1em"
               viewBox="0 0 16 16"
               class="bi bi-pencil"
-              fill="#ffffff"
+              fill="currentColor"
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
@@ -52,13 +53,13 @@
               />
             </svg>
           </a>
-          <a href="{{url_for('delete_contact', contact_id = loop.index0)}}"
+          <a href="{{url_for('delete_contact', contact_id = id)}}"
             ><svg
               width="1em"
               height="1em"
               viewBox="0 0 16 16"
               class="bi bi-trash"
-              fill="#ffffff"
+              fill="currentColor"
               xmlns="http://www.w3.org/2000/svg"
             >
               <path

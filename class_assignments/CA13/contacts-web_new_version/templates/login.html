@@ -1,0 +1,13 @@
+{% extends 'base.html' %} {% block content %}
+<div>
+    <h3 class="ml-4 mt-5">Login Form</h3>
+    <form method="GET" action="{{url_for('index')}}">
+        <label class="ml-5 mt-5">Email</label>
+         <input type="text" name="emailUser" id="emailUser" placeholder="Enter your email"/>
+
+         <label class="ml-5 mt-5">Password</label>
+         <input type="text" name="passwordlUser" id="passwordUser" placeholder="Enter your password"/>
+         <input class="ml-5" type="submit" value="Login" name="login" id="login"/> 
+    </form>
+</div>
+{% endblock %}
