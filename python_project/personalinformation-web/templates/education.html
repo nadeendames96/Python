@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <!-- Educations -->
+<div id="education">
+    <h1 class="h1" style="font-size: 50px;">EDUCATION</h1>
+    {% if personalinfo.educations %}
+    <table class="table border border-danger mb-5"  >
+        <tr>
+            <th scope="col" class="h1">Education</th>
+            <th scope="col" class="h1">School/University</th>
+            
+        </tr>
+        <tbody>
+            {% for education in personalinfo.educations %}
+            <tr>
+                
+                      <td  class="h3">{{education}}</td>
+                
+                {% if education =="Elementry School (Scientific section)"  %}
+                <td  class="h3"><i class="fa fa-check" aria-hidden="true" style="color: red;"></i>Roqia Bent Al-Rasool &nbsp;&nbsp;&nbsp;&nbsp;[2004-2015]<br/>Al-Baqa Applied University</td>
+                {% else %}
+                <td class="h3">&nbsp;&nbsp;Roqia Bent Al-Rasool<br/><i class="fa fa-check" aria-hidden="true" style="color: red;"></i>Al-Baqa Applied University &nbsp;&nbsp;&nbsp;&nbsp;[2015-2019]</td>
+                {% endif %}
+            </tr>
+            
+            {% endfor %}
+        
+        </tbody>
+    </table>
+    
+    {% endif %}
+    </div>
+    
+</div>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <!-- Skills -->
+
+<div id="skill">
+    <h1 class="h1" style="font-size: 50px;">SKILLS</h1>
+    <p class="subtitle h2 mb-5">Programming Language & Tools</p>
+    <p class="mx-auto w-25"><i class="fa fa-html5" aria-hidden="true" style="font-size: 70px;color:red"></i> 
+        <i class="fa fa-css3 ml-5" aria-hidden="true" style="font-size: 70px;color:orange"></i>
+        <i class="fa fa-android ml-5" aria-hidden="true" style="font-size: 70px;color:green"></i>
+    </p>
+    <p  class="h2">ANOTHER SKILLS</p>
+    {% if personalinfo.skills %}
+    {% for skill in personalinfo.skills %}
+    <p  class="h3"><i class="fa fa-check" aria-hidden="true" style="color: lime;"></i> {{skill}}</p>
+    {% endfor %}
+    {% endif %}
+</div>
+</div>
+{% endblock %}

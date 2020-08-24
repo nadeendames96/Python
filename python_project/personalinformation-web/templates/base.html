@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {% block head %}
+    <meta charset="utf-8" />
+    <title> {% block title %}Personal Information{% endblock %}</title>
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="{{ url_for('static', filename='favicon.ico') }}"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  
+    {% block styles %}
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+   
+    {% endblock %} {% endblock %}
+  </head>
+  <body class="d-flex flex-column h-100">
+    <!-- navigation section -->
+    <header>
+      {% block header %}
+    <nav class="navbar navbar-expand-lg" style="background-color:chocolate; font-size: 16PX;">
+      <a class="navbar-brand" href="#" style="font-size: 30px;color:white;">{{personalinfo.fname | upper}}{{personalinfo.lname | upper}}</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        style="background-color: white;"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse border border" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+        
+            <li class="nav-item">
+                <a class="nav-link" href="{{url_for('index')}}" style="color:white"
+                  >{{personalinfo.home | upper}}</a
+                >
+              </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{url_for('education')}}" style="color:white"
+              >{{personalinfo.education | upper}}</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{url_for('experiance')}}" style="color:white"
+              >{{personalinfo.experiance | upper}}</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{url_for('skill')}}" style="color:white"
+              >{{personalinfo.skill | upper}}</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{url_for('about')}}" style="color:white"
+              >{{personalinfo.interest | upper}}</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{url_for('internship')}}" style="color:white"
+              >{{personalinfo.internship | upper}}</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{url_for('certificate')}}" style="color:white"
+              > {{personalinfo.certification | upper}}</a
+            >
+          </li>
+        </ul>
+        
+    </nav>
+    {% endblock %}
+</header>
+    <!-- main section -->
+    <main>
+      <div>
+        {% block content %}{% endblock %}
+      </div>
+    </main>
+
+    <!-- footer section -->
+    <!-- Footer -->
+<footer class="page-footer font-small stylish-color-dark pt-4 h2" style="background-color: black; color:white">
+
+  <!-- Footer Links -->
+  <div class="container text-center text-md-left">
+
+    <!-- Grid row -->
+    <div class="row">
+
+      <!-- Grid column -->
+      <div class="col-md-4 mx-auto">
+
+        <!-- Content -->
+        <h5 class="font-weight-bold text-uppercase mt-3 mb-4 h1" >{{personalinfo.fname}},{{personalinfo.lname}}</h5>
+        <p>Done</p>
+
+      </div>
+      <!-- Grid column -->
+
+      <hr class="clearfix w-100 d-md-none">
+
+      <!-- Grid column -->
+      <div class="col-md-2 mx-auto">
+
+        <!-- Links -->
+        <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
+
+        <ul class="list-unstyled">
+          <li>
+            <a href="{{url_for('index')}}" style="color: yellow;">Home</a>
+          </li>
+          
+        </ul>
+
+      </div>
+      <!-- Grid column -->
+
+      <hr class="clearfix w-100 d-md-none">
+
+      <!-- Grid column -->
+
+      <hr class="clearfix w-100 d-md-none">
+
+      <!-- Grid column -->
+      <div class="col-md-2 mx-auto">
+
+      
+      </div>
+      <!-- Grid column -->
+
+    </div>
+    <!-- Grid row -->
+
+  </div>
+  <!-- Footer Links -->
+
+  <hr>
+
+  
+  <!-- Call to action -->
+
+  <hr>
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-4">© 2020 Copyright:
+    <a href="https://www.facebook.com/fwis0/?modal=admin_todo_tour" style="color: red;"> FwisTech.com By {{personalinfo.fname}}  <span style="color: white;"> </span> </a>
+  </div>
+  <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
+    {% block scripts %}
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+      crossorigin="anonymous"
+    ></script>
+
+    {% endblock %}
+  </body>
+</html>

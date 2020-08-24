@@ -1,0 +1,21 @@
+{% extends 'base.html'%}
+{% block content %}
+    <div class="container">
+    <!-- Experiance -->
+<div id="experiance">
+    <h1 class="h1" style="font-size: 50px;">EXPERIANCE</h1>
+    {% if personalinfo.experiance %}
+    {% for exp in personalinfo.experiances %}
+    <p  class="h3 mb-5">- {{exp}}</p>
+    {% endfor %}
+    {% endif %}
+    </div>
+    
+        
+    </div>
+    
+
+    
+
+
+{% endblock %}
