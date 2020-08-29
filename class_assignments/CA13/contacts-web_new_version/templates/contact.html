@@ -454,6 +454,131 @@
 
       </div>          
   
+  <!-- label section -->
+  
+  {% if contact.friends %}
+  <div class="container py-2">
+    
+    <div class="row justify-content-between">
+      <div class="col-md-8 mb-3">
+        <h3>Labels</h3>
+        <a href="{{url_for('get_contact', contact_id = contact.id)}}"
+                ><svg
+                  width="1em"
+                  height="1em"
+                  viewBox="0 0 16 16"
+                  class="bi bi-pencil"
+                  fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M11.293 1.293a1 1 0 0 1 1.414 0l2 2a1 1 0 0 1 0 1.414l-9 9a1 1 0 0 1-.39.242l-3 1a1 1 0 0 1-1.266-1.265l1-3a1 1 0 0 1 .242-.391l9-9zM12 2l2 2-9 9-3 1 1-3 9-9z"
+                  />
+                  <path
+                    fill-rule="evenodd"
+                    d="M12.146 6.354l-2.5-2.5.708-.708 2.5 2.5-.707.708zM3 10v.5a.5.5 0 0 0 .5.5H4v.5a.5.5 0 0 0 .5.5H5v.5a.5.5 0 0 0 .5.5H6v-1.5a.5.5 0 0 0-.5-.5H5v-.5a.5.5 0 0 0-.5-.5H3z"
+                  />
+                </svg>
+              </a>
+              <a href="{{url_for('delete_contact', contact_id = contact.id)}}"
+              ><svg
+                width="1em"
+                height="1em"
+                viewBox="0 0 16 16"
+                class="bi bi-trash"
+                fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"
+                />
+                <path
+                  fill-rule="evenodd"
+                  d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"
+                />
+              </svg>
+            </a>
+      
+      </div>
+      <div class="col-md-4 mb-3">
+        
+        <!-- Button trigger modal -->
+        <a class="btn btn-primary" href="{{url_for('add_label', contact_id = contact.id)}}">
+          +
+        </a>
+      </div>      
+    </div>
+    <div class="row">
+      
+    {% for friend in contact.friends %}
+    <span class="mr-2 badge badge-pill badge-primary">{{friend.id}}</span>
+    <span class="mr-2 badge badge-pill badge-primary">{{friend.fname}}</span>
+    <span class="mr-2 badge badge-pill badge-primary">{{friend.lname}}</span>
+
+    {% endfor %}
+    
+    </div>    
+    {% else %}
+    <div class="row justify-content-between ml-4">
+      <div class="col-md-8 mb-3" >
+        <h3>Labels</h3>
+        <a href="{{url_for('get_contact', contact_id = contact.id)}}"
+                ><svg
+                  width="1em"
+                  height="1em"
+                  viewBox="0 0 16 16"
+                  class="bi bi-pencil"
+                  fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M11.293 1.293a1 1 0 0 1 1.414 0l2 2a1 1 0 0 1 0 1.414l-9 9a1 1 0 0 1-.39.242l-3 1a1 1 0 0 1-1.266-1.265l1-3a1 1 0 0 1 .242-.391l9-9zM12 2l2 2-9 9-3 1 1-3 9-9z"
+                  />
+                  <path
+                    fill-rule="evenodd"
+                    d="M12.146 6.354l-2.5-2.5.708-.708 2.5 2.5-.707.708zM3 10v.5a.5.5 0 0 0 .5.5H4v.5a.5.5 0 0 0 .5.5H5v.5a.5.5 0 0 0 .5.5H6v-1.5a.5.5 0 0 0-.5-.5H5v-.5a.5.5 0 0 0-.5-.5H3z"
+                  />
+                </svg>
+              </a>
+              <a href="{{url_for('delete_contact', contact_id = contact.id)}}"
+              ><svg
+                width="1em"
+                height="1em"
+                viewBox="0 0 16 16"
+                class="bi bi-trash"
+                fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"
+                />
+                <path
+                  fill-rule="evenodd"
+                  d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"
+                />
+              </svg>
+            </a>
+      
+      </div>
+      <div class="col-md-4 mb-3">
+        <!-- Button trigger modal -->
+        <a class="btn btn-primary" href="{{url_for('add_label', contact_id = contact.id)}}">
+          +
+        </a>
+      </div>
+    </div>
+    
+    <h5 class="ml-5">This contact has no label.</h5>
+    {% endif %}
+
+      </div>          
+  
+
+      
+    
+  
 
       
     
@@ -573,38 +698,85 @@
 </div>
 
 
-<!-- Friends Sections -->
-<div class="modal fade" id="friendsModal" tabindex="-1" aria-labelledby="friendsModelLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="friendsModelLabel">Add Friends</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form method="POST" action="{{url_for('add_friend', contact_id = contact.id)}}">
-        <div class="row">
-          <div class="col-md-6 mb-3">
-            <label for="friends">Friend</label>
-            <input
-              type="text"
-              class="form-control"
-              id="friends"
-              name="friends"
-              placeholder="Enter a friend"
-              required
-            />
-          </div>
-        </div>
-        <button type="submit" class="btn btn-primary">Add a friend</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        </form>
-      </div>
+<!-- Friends Sections -->  
+ <div class="container py-2">
+  <div class="row justify-content-between">
+    <div class="col-md-8 mb-3">
+      <h3>Friends</h3>
+    </div>
+    <div class="col-md-4 mb-3">
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#emailsModal">
+        +
+      </button>
     </div>
   </div>
+  <div class="row justify-content-between">
+    <div class="col-md-12 mb-3">
+  {% if contact.friends %}
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Friend</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for friend in contact.friends %}
+      <tr>
+        <th scope="row">{{loop.index}}</th>
+        <td>{{friend.id}}</td>
+        <td>
+          <a href="{{url_for('get_contact', contact_id = contact.id)}}"
+            ><svg
+              width="1em"
+              height="1em"
+              viewBox="0 0 16 16"
+              class="bi bi-pencil"
+              fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M11.293 1.293a1 1 0 0 1 1.414 0l2 2a1 1 0 0 1 0 1.414l-9 9a1 1 0 0 1-.39.242l-3 1a1 1 0 0 1-1.266-1.265l1-3a1 1 0 0 1 .242-.391l9-9zM12 2l2 2-9 9-3 1 1-3 9-9z"
+              />
+              <path
+                fill-rule="evenodd"
+                d="M12.146 6.354l-2.5-2.5.708-.708 2.5 2.5-.707.708zM3 10v.5a.5.5 0 0 0 .5.5H4v.5a.5.5 0 0 0 .5.5H5v.5a.5.5 0 0 0 .5.5H6v-1.5a.5.5 0 0 0-.5-.5H5v-.5a.5.5 0 0 0-.5-.5H3z"
+              />
+            </svg>
+          </a>
+          <a href="{{url_for('delete_contact', contact_id = contact.id)}}"
+            ><svg
+              width="1em"
+              height="1em"
+              viewBox="0 0 16 16"
+              class="bi bi-trash"
+              fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"
+              />
+              <path
+                fill-rule="evenodd"
+                d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"
+              />
+            </svg>
+          </a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <h5>This contact has no emails.</h5>
+  {% endif %}
+  </div>
+  </div>
 </div>
-<h1 class="ml-5"><a href="{{url_for('contacts')}}">&laquo;<span class="ml-2" style="font-size: 20px;">Go back</span></a></h1>
+
+
 
 {% endblock %}

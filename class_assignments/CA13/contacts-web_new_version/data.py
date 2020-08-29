@@ -51,7 +51,9 @@ def generate_contacts():
     bert.add_label("Friends with Ernie")
     bert.update_biography("Bert is Ernie's best friend and roommate on Sesame Street. The pair share the basement apartment at 123 Sesame Street.")
     bert.avatar_url = "https://vignette.wikia.nocookie.net/muppet/images/e/e1/Bert_smile.png/revision/latest/scale-to-width-down/280?cb=20110630173259"
-
+    bert.add_friends(cookie)
+    roosevelt.add_friends(bert)
+    cookie.add_friends(don)
     # add contacts to contact book
     sesame_street.add(cookie)
     sesame_street.add(don)

@@ -54,8 +54,12 @@ class Contact:
 
     # add_friends   
     def add_friends(self,friend):
-        self.friends.append(friend)
+       self.friends.append(friend.id)   
     
+    #  get friends
+    def get_friends(self):
+        return self.friends
+
     # add_email(label)
     def add_email(self, email):
         self.emails.append(email)
@@ -89,3 +93,5 @@ class Contact:
             print(f"{self.fname} has email: '{email}'")
     def delete_phone(self,phone_key):
      del self.phone_numbers[phone_key]
+    def get_name(self):
+        return self.fname
