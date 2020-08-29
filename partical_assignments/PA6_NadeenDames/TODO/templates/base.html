@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TODO List</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    {% block styles %}
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+
+    {% endblock %}
+    <meta charset="utf-8" />
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">TODO Tasks</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="{{url_for('tasks.index')}}">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{url_for('tasks.add_task')}}">Add Task</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{url_for('tasks.delete_tasks')}}">Delete All Tasks</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{url_for('user.get_users')}}">My Account</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{url_for('user.delete')}}">Delete Account</a>
+          </li>
+          <li class="nav-item ml-5">
+            <a class="nav-link" href="{{url_for('login.login')}}">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{url_for('login.register')}}">Register</a>
+          </li>
+          <li class="nav-item ml-5">
+            <a class="nav-link" href="{{url_for('login.logout')}}">Logout</a>
+          </li>
+        </ul>
+        </div>
+    </nav>
+
+    <section class="content">
+      <header>
+        {% block header %}{% endblock %}
+      </header>
+
+      {% for message in get_flashed_messages() %}
+      <div class="flash">{{ message }}</div>
+      {% endfor %} {% block content %}{% endblock %}
+    </section>
+  </body>
+</html>

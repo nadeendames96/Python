@@ -1,0 +1,49 @@
+  {% extends 'base.html' %} 
+
+  <!-- header block -->
+  {% block header %}
+  <h1>{% block title %}Taks{% endblock %}</h1>
+  {% endblock %}
+
+  <!-- content block -->
+  {% block content %} 
+  {% for task in tasks %}
+  
+  <h3 style="color: #000000;">
+  status:
+  </h3>
+  <div class="mt-5 mb-5">
+    <button type="button" class="btn btn-success">Success</button>
+    <button type="button" class="btn btn-danger">Not Success</button>
+
+  </div>    
+
+  <article class="task">
+    <header>
+      <div>
+        <h1>{{ task['title'] }}</h1>
+        <div class="about" style="color: #BDBDBD;">
+        date :{{ task['created'] }}
+        </div>
+      </div>
+    </header>
+    <p class="body"><h2 class="mr-5">Task :</h2>{{ task['body'] }}</p>
+    <div class="container w-25" >
+      <form>
+      <input type="submit" class="btn btn-info" value="Update Task">
+    </form>
+    <form>
+      <input type="submit" class="btn btn-info" value="Delete Task">
+    </form>
+    </div>
+      
+   
+  </article>
+
+  {% if not loop.last %}
+  <hr />
+  {% endif %} 
+      
+  {% endfor %} 
+
+  {% endblock %}

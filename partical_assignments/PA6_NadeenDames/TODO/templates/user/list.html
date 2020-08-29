@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+<!-- header block -->
+{% block header %}
+<h1>{% block title %}Users{% endblock %}</h1>
+{% endblock %}
+
+<!-- content block -->
+{% block content %} {% for user in users %}
+<article class="post">
+  <header>
+    <div>
+      <h1>{{ user['username'] }}</h1>
+    </div>
+  </header>
+  <div class="container w-25" >
+    <form action="{{url_for('user.update_username')}}"> 
+    <input type="submit" class="btn btn-info" value="Update Username">
+  </form>
+  <form  action="{{url_for('user.update_email')}}">
+    <input type="submit" class="btn btn-info" value="Update Email">
+  </form>
+  <form action="{{url_for('user.update_password')}}">
+    <input type="submit" class="btn btn-info" value="Update Password">
+  </form>
+  <form action="{{url_for('user.delete')}}">
+    <input type="submit" class="btn btn-info" value="Delete User">
+  </form>
+  
+  </div>
+
+</article>
+
+{% if not loop.last %}
+<hr />
+{% endif %} {% endfor %} {% endblock %}

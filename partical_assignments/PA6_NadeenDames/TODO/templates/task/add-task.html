@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+<!-- header block -->
+{% block header %}
+<h1>{% block title %}Add Post{% endblock %}</h1>
+{% endblock %}
+
+<!-- content block -->
+{% block content %}
+<form method="POST" action="">
+  <div class="row">
+    <div class="col-md-6 mb-3">
+      <label for="title">Task Title:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="title"
+        name="title"
+        placeholder="Enter a title"
+        required
+      />
+    </div>
+    <div class="col-md-6 mb-3">
+      <label for="body-task">Description:</label>
+      <textarea
+        type="text"
+        class="form-control"
+        id="body-task"
+        name="body-task"
+        placeholder="Enter your text"
+        required=""
+      ></textarea>
+    </div>
+    <h1 class="container">Proiritty</h1>
+    <div class="container mt-1">
+      <!-- Default unchecked -->
+<div class="custom-control custom-radio">
+  <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
+  <label class="custom-control-label" for="defaultUnchecked">Default unchecked</label>
+</div>
+
+<!-- Default checked -->
+<div class="custom-control custom-radio">
+  <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
+  <label class="custom-control-label" for="defaultChecked">Default checked</label>
+</div>
+    </div>
+    
+  </div>
+  
+  <hr class="mb-4" />
+  <button class="btn btn-primary btn-lg btn-block" type="submit">
+    Create Task
+  </button>
+</form>
+{% endblock %}
