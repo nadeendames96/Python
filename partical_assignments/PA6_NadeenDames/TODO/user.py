@@ -69,7 +69,7 @@ def update_username():
         try:
             db.execute("UPDATE  user SET username=?",(username))
             db.commit()
-            
+
             return redirect("/users")
 
         except sqlite3.Error as er:
