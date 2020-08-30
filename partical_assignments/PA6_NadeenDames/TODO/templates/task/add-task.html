@@ -1,56 +1,40 @@
 {% extends 'base.html' %}
-
-<!-- header block -->
-{% block header %}
-<h1>{% block title %}Add Post{% endblock %}</h1>
-{% endblock %}
-
-<!-- content block -->
 {% block content %}
-<form method="POST" action="">
-  <div class="row">
-    <div class="col-md-6 mb-3">
-      <label for="title">Task Title:</label>
-      <input
-        type="text"
-        class="form-control"
-        id="title"
-        name="title"
-        placeholder="Enter a title"
-        required
-      />
+<div class="container h3">
+  <form method="post" enctype="multipart/form-data" action="{{url_for('task.index')}}"> 
+    <h1> Task </h1>
+    <div class="form-group row">
+      <label for="staticEmail" class="col-sm-2 col-form-label">Task Title</label>
+      <div class="col-sm-10">
+        <input type="text"  class="form-control-plaintext" id="task" name="tasktitle"
+         placeholder="enter task  title" required>
+      </div>
     </div>
-    <div class="col-md-6 mb-3">
-      <label for="body-task">Description:</label>
-      <textarea
-        type="text"
-        class="form-control"
-        id="body-task"
-        name="body-task"
-        placeholder="Enter your text"
-        required=""
-      ></textarea>
+    <div class="form-group row">
+      <label for="staticEmail" class="col-sm-2 col-form-label">Task  Description</label>
+      <div class="col-sm-10">
+        <input type="text"  class="form-control-plaintext" id="taskdescription" name="body-task" placeholder="enter task  description" required>
+      </div>
     </div>
-    <h1 class="container">Proiritty</h1>
-    <div class="container mt-1">
-      <!-- Default unchecked -->
-<div class="custom-control custom-radio">
-  <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
-  <label class="custom-control-label" for="defaultUnchecked">Default unchecked</label>
+    <div class="form-group col">
+    <label for="staticEmail" class="col-sm-2 col-form-label">Prority</label>    
+    <select name="prorites" class="text-black" style="background-color:hotpink;">
+        <option  value="priority">LOW</option>
+        <option  value="priority">MEDUIME</option>
+        <option  value="priority">HIGH</option>
+    </select>
 </div>
+<div class="form-group col">
+  <label for="staticEmail" class="col-sm-2 col-form-label">Task List</label>
 
-<!-- Default checked -->
-<div class="custom-control custom-radio">
-  <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
-  <label class="custom-control-label" for="defaultChecked">Default checked</label>
+  <select name="tasklist" class="text-black" style="background-color:hotpink;">
+    {% for task in tasklist %}
+      <option  value="tasklist">{{task}}</option>
+{% endfor %}
+  </select>
 </div>
-    </div>
-    
-  </div>
-  
-  <hr class="mb-4" />
-  <button class="btn btn-primary btn-lg btn-block" type="submit">
-    Create Task
-  </button>
-</form>
+    <input type=submit value=Upload>
+   
+  </form>
+</div>
 {% endblock %}

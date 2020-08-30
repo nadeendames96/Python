@@ -6,6 +6,12 @@
       rel="stylesheet"
       href="{{ url_for('static', filename='style.css') }}"
     />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  
     {% block styles %}
     <link
       rel="stylesheet"
@@ -21,47 +27,40 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">TODO Tasks</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+
+    <nav class="navbar navbar-dark bg-primary h1 text-white ">
+      <!-- Navbar content -->
+      <a class="navbar-brand h1" href="#">TODO LIST</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-    
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
           <li class="nav-item active">
-            <a class="nav-link" href="{{url_for('tasks.index')}}">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="{{url_for('tasks.index')}}">Home </span></a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{url_for('tasks.add_task')}}">Add Task</a>
+          <li class="nav-item active">
+            <a class="nav-link" href="{{url_for('tasks.add_taskslist')}}">Add Task list</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{url_for('tasks.delete_tasks')}}">Delete All Tasks</a>
+          <li class="nav-item active">
+            <a class="nav-link" href="{{url_for('task.add_task')}}">Add Task</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{url_for('user.get_users')}}">My Account</a>
+          <li class="nav-item active">
+            <a class="nav-link" href="{{url_for('user.get_users')}}">My Profile</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{url_for('user.delete')}}">Delete Account</a>
+          <li class="nav-item active">
+            <a class="nav-link" href="{{url_for('login')}}">Login</a>
           </li>
-          <li class="nav-item ml-5">
-            <a class="nav-link" href="{{url_for('login.login')}}">Login</a>
+          <li class="nav-item active">
+            <a class="nav-link" href="{{url_for('register')}}">SignUp</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{url_for('login.register')}}">Register</a>
-          </li>
-          <li class="nav-item ml-5">
-            <a class="nav-link" href="{{url_for('login.logout')}}">Logout</a>
+          <li class="nav-item active">
+            <a class="nav-link" href="{{url_for('logout')}}">Logout</a>
           </li>
         </ul>
-        </div>
+      </div>
     </nav>
-
-    <section class="content">
-      <header>
-        {% block header %}{% endblock %}
-      </header>
-
+    <section class="content">      
       {% for message in get_flashed_messages() %}
       <div class="flash">{{ message }}</div>
       {% endfor %} {% block content %}{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+
+  <form method="post" enctype="multipart/form-data"> 
+    <h1>Update User</h1>
+    <div class="form-group row">
+      <label for="staticEmail" class="col-sm-2 col-form-label">Task list Title</label>
+      <div class="col-sm-10">
+        <input type="text"  class="form-control-plaintext" id="tasklist_title" name="tasklist_title"
+         placeholder="enter task list title">
+      </div>
+    </div>
+    <div class="form-group row">
+        <label for="staticEmail" class="col-sm-2 col-form-label">Task list Description</label>
+        <div class="col-sm-10">
+          <input type="text"  class="form-control-plaintext" id="tasklist_description" name="tasklist_description"
+           placeholder="enter task list title">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="staticEmail" class="col-sm-2 col-form-label">Task List Photo</label>
+        <div class="col-sm-10">
+          <input type="text"  class="form-control-plaintext" id="tasklistphoto" name="tasklistphoto"
+           placeholder="enter task list title">
+        </div>
+      </div>
+     <input type=submit value=update>
+    </div>
+  </form>
+{% endblock %}

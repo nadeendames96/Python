@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block content %}
+
+  <form method="post" enctype="multipart/form-data" action="{{url_for('task.index')}}"> 
+    <h1>Update Task</h1>
+    <div class="form-group row">
+      <label for="staticEmail" class="col-sm-2 col-form-label">Task Tilte</label>
+      <div class="col-sm-10">
+        <input type="text"  class="form-control-plaintext" id="tasktitle_update" name="tasktitle_update"
+         placeholder="enter task list title">
+      </div>
+    </div>
+    <div class="form-group row">
+        <label for="staticEmail" class="col-sm-2 col-form-label">Task Description</label>
+        <div class="col-sm-10">
+          <input type="text"  class="form-control-plaintext" id="taskbody_update" name="taskbody_update"
+           placeholder="enter task list title">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="staticEmail" class="col-sm-2 col-form-label">Prorities</label>
+        <select name="prorites" class="text-black" style="background-color:hotpink;">
+            <option  value="priority">LOW</option>
+            <option  value="priority">MEDUIME</option>
+            <option  value="priority">HIGH</option>
+        </select>
+      </div>
+      <div class="form-group col">
+        <label for="staticEmail" class="col-sm-2 col-form-label">Task List</label>
+      
+        <select name="tasklist" class="text-black" style="background-color:hotpink;">
+          <!-- {% for task in tasklist %} -->
+            <option  value="tasklist">Personal Task</option>
+      <!-- {% endfor %} -->
+        </select>
+      </div>
+
+      </div>
+     <input type=submit value=Update>
+    </div>
+  </form>
+{% endblock %}

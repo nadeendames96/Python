@@ -1,34 +1,37 @@
 {% extends 'base.html' %}
 
 <!-- header block -->
+
 {% block header %}
-<h1>{% block title %}Users{% endblock %}</h1>
+<h1>User Information </h1>
 {% endblock %}
 
 <!-- content block -->
-{% block content %} {% for user in users %}
-<article class="post">
-  <header>
-    <div>
-      <h1>{{ user['username'] }}</h1>
-    </div>
-  </header>
-  <div class="container w-25" >
-    <form action="{{url_for('user.update_username')}}"> 
-    <input type="submit" class="btn btn-info" value="Update Username">
-  </form>
-  <form  action="{{url_for('user.update_email')}}">
-    <input type="submit" class="btn btn-info" value="Update Email">
-  </form>
-  <form action="{{url_for('user.update_password')}}">
-    <input type="submit" class="btn btn-info" value="Update Password">
-  </form>
-  <form action="{{url_for('user.delete')}}">
-    <input type="submit" class="btn btn-info" value="Delete User">
-  </form>
-  
-  </div>
+{% block content %}
 
+<div class="container mt-5"><a  href="{{url_for('user.updateinfo')}}" style="font-size: 20px;float:right;" ><i class="fa fa-pencil" aria-hidden="true"></i>
+</a>
+</div>
+
+{% for user in users %}
+<article class="card mt-5">
+    <div class="mt-5 ml-2">
+      <h3>Username : {{ user['username'] }}</h3>
+    </div>
+    <div>
+      <div class="mt-2 ml-2">
+        <h3>Firstname : {{ user['fname'] }}</h3>
+      </div>
+      <div>
+        <div>
+          <h3 class="mt-2 ml-2">Lastname : {{ user['lname'] }}</h3>
+        </div>
+        <div>
+      <h3 class="mt-2 ml-2 mb-5">Email : {{ user['email'] }}</h3>
+    </div>
+    <form action="{{url_for('user.deleteaccount')}}">
+      <input class="h1 mx-auto w-50 text-primary bg-white" type="submit" value="Delete Account" name="delete"/>
+    </form>
 </article>
 
 {% if not loop.last %}

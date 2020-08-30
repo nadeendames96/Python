@@ -1,49 +1,23 @@
-  {% extends 'base.html' %} 
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+  <p></p>
+</div>
+<div class="container w-100 float-right text-primary h1"><a class="h1" style="float: right;font-size:50px" 
+  href="{{url_for('task.add_task')}}"><i class="fa fa-plus-circle" aria-hidden="true"></i>
+</a></div>
+{% for task in tasks %}
+<div class="card mx-auto w-50 h1">
+    <div class="card-body">
+        <p class="card-text h1"><b>{{task['title']}}</b></p>
+      <p class="card-text h1"><b>{{task['body']}}</b></p>
+      <p class="card-text h1"><b>{{task['prority']}}</b></p>
+      <p class="card-subtitle mx-auto w-100 h4">Created On :{{task['created']}}</p>
+      <a href="{{url_for('task.update_task')}}" class="btn btn-primary w-25 mx-auto h1" style="font-size: 20px;">update </a>
+      <a href="{{url_for('task.delete_task')}}" class="btn btn-primary w-25 mx-auto h1" style="font-size: 20px;">delete </a>
 
-  <!-- header block -->
-  {% block header %}
-  <h1>{% block title %}Taks{% endblock %}</h1>
-  {% endblock %}
-
-  <!-- content block -->
-  {% block content %} 
-  {% for task in tasks %}
-  
-  <h3 style="color: #000000;">
-  status:
-  </h3>
-  <div class="mt-5 mb-5">
-    <button type="button" class="btn btn-success">Success</button>
-    <button type="button" class="btn btn-danger">Not Success</button>
-
-  </div>    
-
-  <article class="task">
-    <header>
-      <div>
-        <h1>{{ task['title'] }}</h1>
-        <div class="about" style="color: #BDBDBD;">
-        date :{{ task['created'] }}
-        </div>
-      </div>
-    </header>
-    <p class="body"><h2 class="mr-5">Task :</h2>{{ task['body'] }}</p>
-    <div class="container w-25" >
-      <form>
-      <input type="submit" class="btn btn-info" value="Update Task">
-    </form>
-    <form>
-      <input type="submit" class="btn btn-info" value="Delete Task">
-    </form>
     </div>
-      
-   
-  </article>
+  </div>
 
-  {% if not loop.last %}
-  <hr />
-  {% endif %} 
-      
-  {% endfor %} 
-
-  {% endblock %}
+  {% endfor %}
+{% endblock %}

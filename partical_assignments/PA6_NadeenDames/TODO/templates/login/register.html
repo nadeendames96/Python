@@ -7,7 +7,7 @@
 
 <!-- content block -->
 {% block content %}
-<form method="POST" action="">
+<form method="POST" action="{{url_for('tasks.index')}}">
   <div class="row">
     <div class="col-md-6 mb-3">
       <label for="username">Username:</label>
@@ -20,6 +20,30 @@
         required
       />
     </div>
+    <div class="col-md-6 mb-3">
+      <label for="username">Firstname:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="firstname"
+        name="firstname"
+        placeholder="Enter  firstname"
+        required
+      />
+    </div>
+    <div class="col-md-6 mb-3">
+      <label for="username">Lastname:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="lastname"
+        name="lastname"
+        placeholder="Enter lastname"
+        required
+      />
+    </div>
+   
+   
     <div class="col-md-6 mb-3">
       <label for="username">Email:</label>
       <input
@@ -44,8 +68,7 @@
     </div>
   </div>
   <hr class="mb-4" />
-  <button class="btn btn-primary btn-lg btn-block" type="submit">
-  Register
-  </button>
+  <input class="btn btn-primary btn-lg btn-block" type="submit" value="Register">
+  
 </form>
 {% endblock %}
