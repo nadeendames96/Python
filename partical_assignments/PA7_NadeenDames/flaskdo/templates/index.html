@@ -1,0 +1,61 @@
+{% extends 'base.html' %} {% block content %}
+
+<!-- display all tasks -->
+<div class="container py-2">
+  {% if user %}
+ <h1 class="w-50 auto-max h1" style="margin-left: auto; margin-top:auto"> Welcome {{get_first_name()}} </h1>
+ <h6>Last Open TODO List : {{user_open}}</h6>
+   <hr>  
+   <h2> Task Lists : </h2>
+   {% if tasklists %}
+  {% for tasklist in tasklists %}
+  <ul><li class="text-primary h5">{{tasklist.name}}</li></ul>
+  {% endfor %}
+  {% else %}
+  <p>Not have any list yet</p>
+  {% endif %}
+  {% else %}
+  <h1>Welcome to FlaskDo.</h1>
+  <h2>Please sign up or sign in to get started.</h2>
+  {% endif %}
+<br>
+<hr>
+<br/>
+  <h4>Summary Tasks For User</h4>
+  <br/>
+  <div class="container">
+    <div class="row justify-content-between">
+      <div class="col-md-12 mb-3">
+        {% if tasks %}
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Title</th>
+              <th scope="col">Description</th>
+              <th scope="col">Tags</th>
+              <th scope="col">Task List</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for task in tasks %}
+          
+              <th scope="row">{{loop.index}}</th>
+              <td>{{task.title}}</td>
+              <td>{{task.description}}</td>
+              <td class="badge badge-info mt-3"><a class="text-white" href="#">#{{task.tags}}</a></td>
+              <td>{{task.name}}</td>
+                          </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        {% else %}
+        <h5>You have no tasks.</h5>
+        {% endif %}
+      </div>
+     <h5 class="text-danger"> Last Updated Task : {{update_date}}</h5>
+    </div> 
+    </div>
+  </div>
+
+{% endblock%}
